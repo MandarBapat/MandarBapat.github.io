@@ -10,9 +10,8 @@
 
   
     
-    <meta name="description" content="Introduction Botnets are a network of devices, can be a laptop or a smartphone, that are infected by malware and are under the control of a botmaster, also called a bot-herder.
-There are 2 types of botnets:
-References ">
+    <meta name="description" content="Introduction This is an introductory article on botnets. I intend to just ‘skim’ over the topic: explain what botnets are, how they work, the different attacks that they can carry out and prevention and detection methods. My purpose is that the reader becomes aware about botnets. The subtopics being vast in themselves, cannot be covered here and deserve an article of their own.
+Pre-requisites  A basic understanding of how devices communicate in client-server and peer-to-peer forms of communication.">
   
 
   <link rel="apple-touch-icon" sizes="180x180" href="https://mandarbapat.github.io/apple-touch-icon.png">
@@ -270,11 +269,8 @@ References ">
     <div class="date">
       
       
-      <strong>Publish date: </strong>Dec 26, 2021
+      <strong>Publish date: </strong>Dec 27, 2021
       
-        
-          <br>
-          <strong>Last updated: </strong>Dec 26, 2021
         
       
     </div>
@@ -289,7 +285,7 @@ References ">
                 <use xlink:href="#tag"></use>
               </svg>
               
-              <a href="/tags/cybersecurity/">cybersecurity</a>
+              <a href="/tags/malware/">malware</a>
             </li>
           
             <li>
@@ -298,6 +294,22 @@ References ">
               </svg>
               
               <a href="/tags/botnets/">botnets</a>
+            </li>
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              
+              <a href="/tags/cybersecurity/">cybersecurity</a>
+            </li>
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              
+              <a href="/tags/ddos/">DDoS</a>
             </li>
           
         </ul>
@@ -310,6 +322,31 @@ References ">
     <nav id="TableOfContents">
   <ul>
     <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#pre-requisites">Pre-requisites</a></li>
+    <li><a href="#so-what-are-botnets">So, what are botnets?</a>
+      <ul>
+        <li><a href="#description">Description</a></li>
+        <li><a href="#types">Types</a>
+          <ul>
+            <li><a href="#centralized-botnets">Centralized botnets</a></li>
+            <li><a href="#p2p-botnets">P2P botnets</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#how-botnets-work-and-how-do-they-expand-in-size">How botnets work and how do they expand in size?</a>
+      <ul>
+        <li><a href="#working">Working</a></li>
+        <li><a href="#spreading-of-the-infection">Spreading of the infection</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-attacks">The Attacks</a></li>
+    <li><a href="#prevention-detection-and-mitigation">Prevention, Detection and Mitigation</a>
+      <ul>
+        <li><a href="#detection">Detection</a></li>
+        <li><a href="#mitigation">Mitigation</a></li>
+      </ul>
+    </li>
     <li><a href="#references">References</a></li>
   </ul>
 </nav>
@@ -318,9 +355,121 @@ References ">
 
 
     <h2 id="introduction">Introduction</h2>
-<p>Botnets are a network of devices, can be a laptop or a smartphone, that are infected by malware and are under the control of a <strong>botmaster</strong>, also called a <strong>bot-herder</strong>.</p>
-<p>There are 2 types of botnets:</p>
+<p>This is an introductory article on botnets. I intend to just &lsquo;skim&rsquo; over the topic: explain what botnets are, how they work, the different attacks that they can carry out and prevention and detection methods. My purpose is that the reader becomes aware about botnets. The subtopics being vast in themselves, cannot be covered here and deserve an article of their own.</p>
+<h2 id="pre-requisites">Pre-requisites</h2>
+<ol>
+<li>A basic understanding of how devices communicate in <strong>client-server</strong> and <strong>peer-to-peer</strong> forms of communication. This will enable you to imagine how the bots are communicating amongst themselves and also help you to form a mental picture of the bot network.</li>
+<li>What a <strong>malware</strong> is and its different types. Knowledge about various types of malware and how they spread will help you to understand how new bots are recruited in the botnet.</li>
+<li><strong>Denial of Service(DoS)</strong> attacks. If you know how DoS attacks are carried out, you will be able to appreciate why botnets are the weapon of choice for attackers for carrying out DoS attacks.</li>
+</ol>
+<h2 id="so-what-are-botnets">So, what are botnets?</h2>
+<h3 id="description">Description</h3>
+<p>A <strong>botnet</strong> is a network of devices, all infected with some form of malware, that are under the control of a <strong>botmaster</strong>, also called a <strong>bot-herder</strong>. The botmaster issues commands to the bots which in turn carry out the specific task on behalf of the botmaster. The botmaster can be a single person or an organization. As you can see, with millions of bots, botnets provide the botmaster with huge computational power and IP diversity. Its like having an army of computers by your side. Botnets can be used to launch a variety of attacks like <strong>Distributed Denial of Service(DDoS)</strong>, email spamming, key logging and password cracking to name a few.</p>
+<p>Does the network of bots consist of some specific devices? Not necessarily. Your device may be a bot too, and you may not even know it! This is why bots are sometimes called as <strong>zombies</strong>. A zombie is a living being, infected with a virus, who is not in control of its own body. Similarly, the owner of the bots do not recognize that their device is being used to carry out malicious tasks.</p>
+<p>Botnets are huge in size. They do not contain just hundreds or thousands of devices, but millions of them. The botnet Zeus had about 3.6 million PCs in its network.</p>
+<p>Not all botnets are malicious per se. The <strong>Hajime</strong> botnet is a P2P structured botnet. In contrast to other botnets spreading their virus to vulnerable devices, Hajime actually attempts to secure devices by patching their security holes.</p>
+<h3 id="types">Types</h3>
+<p>Botnets are classified based on the structure of their network, into 2 categories:</p>
+<h4 id="centralized-botnets">Centralized botnets</h4>
+
+
+
+
+
+
+
+
+
+  
+
+
+<figure role="group" aria-describedby="caption-a948c2426005dbfaeca88f60e112c05e">
+  <a href="/botnets/cc_botnet.jpg" class="img-link">
+    <img src="/botnets/cc_botnet_huf63b7d1b188f05f5b4b361e40398f8ac_666604_700x0_resize_q99_box.jpg">
+  </a>
+  <figcaption id="caption-a948c2426005dbfaeca88f60e112c05e">
+    A centralized botnet. Each bot is connected to some server from where it receives its commands. <a href="http://www.cs.ucf.edu/~czou/research/P2PBotnets-bookChapter.pdf">Credits</a>.
+  </figcaption>
+</figure>
+
+<p>As you can see from the image, in a centralized botnet, each bot is connected to one or more <strong>Command and Control(C&amp;C)</strong> servers. Such botnets are extremely efficient for the botmasters to issue commands to the bots. The bots take their commands from the C&amp;C servers and carry out the attack. But at the same time, the servers act as a single point of failure, as shutting down the servers will essentially break the botnet.</p>
+<h4 id="p2p-botnets">P2P botnets</h4>
+
+
+
+
+
+
+
+
+
+  
+
+
+<figure role="group" aria-describedby="caption-cc2494db6fd539d0c5a4de77f44f9022">
+  <a href="/botnets/p2p_botnet.jpg" class="img-link">
+    <img src="/botnets/p2p_botnet_huad9b53cdf162ebecace2971426acf13c_944762_700x0_resize_q99_box.jpg">
+  </a>
+  <figcaption id="caption-cc2494db6fd539d0c5a4de77f44f9022">
+    A P2P botnet. Each bot is connected to some other bot in the network. Every bot can act as a client or a server. <a href="http://www.cs.ucf.edu/~czou/research/P2PBotnets-bookChapter.pdf">Credits</a>.
+  </figcaption>
+</figure>
+
+<p>Peer-to-peer networks are generally decentralized, i.e., there is no single central server where the clients request for services. Each node in a P2P network (imagine each device as a node of a graph) is a client as well as a server, depending on the scenario. If node <strong>N</strong> wants a file stored on node <strong>M</strong>, N becomes a client and M acts as a server.</p>
+<p>In a P2P botnet, the botmaster can insert the commands at any node of the network. These types of botnets are resilient to the single point of failure defense attacks, as there are no central servers.</p>
+<h2 id="how-botnets-work-and-how-do-they-expand-in-size">How botnets work and how do they expand in size?</h2>
+<h3 id="working">Working</h3>
+<p>There are 2 ways in which the botmaster issues commands to the bots:</p>
+<ol>
+<li><strong>Pull-based</strong> mechanism - In this mechanism, the botmaster periodically posts commands on a particular location on the network from where the bots retrieve them.</li>
+<li><strong>Push-based</strong> mechanism - In this mechanism, the botmaster sends the commands to a certain section of bots. These bots then transfer the commands to other bots.</li>
+</ol>
+<p>These mechanisms take a slightly different form in P2P botnets, but the mechanism essentially remains the same.</p>
+<h3 id="spreading-of-the-infection">Spreading of the infection</h3>
+<p>This is a high level overview of how botnet expands:</p>
+<ol>
+<li>A bot in the botnet scans for vulnerable devices on the internet.</li>
+<li>When it finds one, it tries to inject malware into the vulnerable device. Common methods like <strong>adwares</strong> or <strong>Trojan horses</strong> can come handy.</li>
+<li>The device becomes infected and becomes a bot.</li>
+<li>The new device now follows the same procedure from step 1.</li>
+</ol>
+<h2 id="the-attacks">The Attacks</h2>
+<p>As I mentioned in the first section of this article, the botmaster has several bots at his/her disposal. With many devices, the attacks can be:</p>
+<ol>
+<li>A <strong>DDoS attack</strong> on a server. - A DDoS attack consists of flooding a server with several malicious or useless requests to such an extent that it becomes unable to respond to requests from genuine users or can even shutdown completely. Bots can come very handy in this attack procedure. Just imagine the amount of traffic you can generate from millions of devices! No wonder botnets are able to bring down the best of the servers!</li>
+<li><strong>Cryptocurrency mining</strong> through botnets - You can acquire cryptocurrency by 2 methods: directly <strong>investing</strong> in it like stocks or through <strong>mining</strong>. Mining involves solving complex mathematical problems. The one who is the first to solve it receives a certain amount of cryptocurrency. But mining requires massive computational power. Generally, only people who have access to special hardware and have the necessary resources, engage in mining. With the computational power of a million computers, malicious hackers build botnets to carry out mining of cryptocurrencies.</li>
+<li><strong>Generating income through Advertisements</strong> - Most tech giants and other companies earn their revenue through advertisements posted on their websites. The advertising agencies pay these tech companies for bringing users to them and based on the model of payment(like pay-per-click), the companies receive payment from these ad agencies. A botmaster can exploit this. He/she can direct the bots to go and click on the advertisements posted on his/her website and generate revenue.</li>
+<li><strong>Brute-force attacks</strong> - A brute force attack from a single computer or a device is often not feasible. But put together a million devices and you can launch a brute-force attack with good success probability. Atleast the vulnerable systems can be breached by such attacks!</li>
+</ol>
+<p>There are many more varients of attacks that are possible apart from these.</p>
+<h2 id="prevention-detection-and-mitigation">Prevention, Detection and Mitigation</h2>
+<p>It goes without saying that the usual prevention tips like not clicking on suspicious links, having a good antivirus software, installing firewalls and so on, are also useful here. This is because the most basic way to stop the botnet is to stop it from acquiring more vulnerable machines. But are there any sophisticated mitigation methods? If not, can we atleast detect bots in a botnet?</p>
+<h3 id="detection">Detection</h3>
+<p>Detection of bots in a network works essentially by analyzing network traffic. Once bots are identified, mitigation methods can be used to take down the botnet. Many of the detection methods have now started incorporating <strong>Machine Learning(ML)</strong> and <strong>Deep Learning(DL)</strong> to build intelligent systems that identify bots from network data. It is difficult to describe the methods in full detail here. Hence, I will just describe how some of the detection methods work:</p>
+<ol>
+<li>Remember the push based mechanism of issuing commands? It is easier to detect bots in this scenario. This is because when the botmaster is issuing commands, a large amount of network traffic is generated which can be easily detected as compared to the pull based mechanism where commands are issued periodically and it is difficult to distinguish normal network traffic from the botnet traffic.</li>
+<li>ML and DL systems can be trained on normal network traffic. These can be then used to identify deviations from normal data which can point out which devices look suspicious. Similar to how an antivirus is built to detect known <strong>malware signatures</strong> in applications, the detection systems can analyze packets to detect for known botnet signatures.</li>
+<li>Specifically for P2P botnets, various network traffic parameters can be analyzed to detect malicious hosts. Like <strong>host-living time</strong>. Benign P2P hosts usually have a shorter connection time while a bot in a P2P botnet needs to be connected to atleast one other peer to remain in the botnet and hence their peer connection time is usually long. Similarly, P2P bots have <strong>large number of peers</strong> as compared to normal P2P hosts. Such parameters can be used to point out the bots from benign hosts.</li>
+</ol>
+<p>There are several other complex detection methods which are proposed but mostly all of them rely on network traffic analysis.</p>
+<h3 id="mitigation">Mitigation</h3>
+<p>Mitigation methods are much more complex to carry out and are also specific. I will list some of the methods with a short description for each:</p>
+<ol>
+<li><strong>Index poisoning technique</strong> for mitigating P2P botnets - A number of false entries are fed into the index records. The bots either download a wrong file or not able to search for the required file.</li>
+<li><strong>Anti-botnet</strong> - As mentioned in the first section, botnets like Hajime can be used to fix vulnerable systems or break down malicious ones. Methods have been proposed to use a malicious botnets' mechanisms to instead spread an anti-botnet.</li>
+<li><strong>Honeypots</strong> - Honeypots are basically devices that are set up so that the botmaster is tricked into acquiring them. The botmaster thinks it is a normal machine and continues its malicious activities through the device while the defenders observe the botnet&rsquo;s attributes. This helps in characterizing the botnet. We can also use these honeypot devices to set up Sybil attacks in P2P botnets.</li>
+<li><strong>Sybil attack</strong> on P2P botnets</li>
+</ol>
+<p>While these mitigation methods are useful, attackers have also devised counter measures against them. For example, botnets today can detect honeypots.</p>
 <h2 id="references">References</h2>
+<p>These are some online articles and research papers that I used:</p>
+<ol>
+<li><a href="http://www.cs.ucf.edu/~czou/research/P2PBotnets-bookChapter.pdf">http://www.cs.ucf.edu/~czou/research/P2PBotnets-bookChapter.pdf</a></li>
+<li><a href="https://www.mdpi.com/1999-5903/13/8/198/htm">https://www.mdpi.com/1999-5903/13/8/198/htm</a></li>
+<li><a href="https://enterprise.comodo.com/blog/tag/latest-malware-attacks/">https://enterprise.comodo.com/blog/tag/latest-malware-attacks/</a></li>
+<li><a href="https://www.pandasecurity.com/en/mediacenter/security/what-is-a-botnet/">https://www.pandasecurity.com/en/mediacenter/security/what-is-a-botnet/</a></li>
+<li><a href="https://usa.kaspersky.com/resource-center/threats/botnet-attacks">https://usa.kaspersky.com/resource-center/threats/botnet-attacks</a></li>
+</ol>
 
   </main>
   <div id="disqus-container">
